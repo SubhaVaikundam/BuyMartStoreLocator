@@ -11,7 +11,6 @@ rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 	@buymart_store_address = BuymartStoreAddress.select("location_id,address1,address2,address3,city,county,state_addr,postal_code,country,phone_number,fax_number,email").where(postal_code:params[:postal_code]).limit(10) 
 	render json: @buymart_store_address
   end
-
   
   private
     # Use callbacks to share common setup or constraints between actions.
