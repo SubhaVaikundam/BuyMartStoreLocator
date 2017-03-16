@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="formmodule">
+<body>
+<form  method="get" ng-submit="submit()">
+<div ng-controller="submitController">
+Postal Code :<input type="text" ng-model="pcode"></br>
+<button ng-click="submit()">submit</button>
+ </div>
+ </form>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+
+<script>
+
+var app=angular.module("formmodule",[]);
+
+app.controller("submitController",function ($scope,$http) {
+
+    $scope.submit = function () {
+
+        var url = 'http://localhost:3000/buymart_store_addresses/'+$scope.pcode;
+        console.debug(url);
+
+
+        $http.get(url).success(function (data) {
+                     $scope.output = data;
+                     console.debug(data);
+                     //console.debug(output);
+
+                });
+			}
+			})
+
+</script>
